@@ -1,0 +1,16 @@
+name: 'Publish Bicep'
+description: ''
+inputs:
+  tag:
+    description: 'tag to publish modules with'
+    required: true
+  registry: 
+    description: 'name of registry to publish the modules to'
+    required: true
+  changedfiles: 
+    description: changed files that need to be uploaded
+    required: true
+  
+runs:
+  using: 'node16'
+  main: 'index.js'
