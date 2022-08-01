@@ -1,6 +1,6 @@
 # Github Action for Deploying Multiple Bicep Files to Azure
 
-A github action to deploy multiple bicep files. Capable of only uploading files that were changed to Azure.
+A github action to deploy multiple bicep files. Given a list of file paths to bicep files, this action publishes each file to a specified registry.
 
 ## Inputs
 
@@ -20,7 +20,7 @@ A github action to deploy multiple bicep files. Capable of only uploading files 
 
 ## Example Workflow
 
-This workflow assumes all the bicep files that need to be reuploaded are under the modules folder. It executes a git diff on the modules folder to get all the files that were added, copied, modified, renamed, and/or had their type changed. It then passes those files to index.js as input and uploads them afte authenticating with Azure.
+This workflow assumes all the bicep files that need to be reuploaded are under the modules folder. It executes a git diff on the modules folder to get all the files that were added, copied, modified, renamed, and/or had their type changed. It then passes those files to index.js as input and uploads them after authenticating with Azure.
 
 ```yml
 on: [push]
@@ -55,7 +55,7 @@ jobs:
         run: |
           az login --service-principal --username ${{secrets.TEST_APPID}} --tenant ${{secrets.TENANT_ID}}  --password ${{secrets.TEST_APPSECRET}}
           az acr login --name ${{secrets.REGISTRYNAME}}
-      - uses: ./.github/actions/publish
+      - uses: upload-bicep@v1
         with: 
           tag: ${{ steps.date.outputs.date }}
           registry: ${{secrets.REGISTRYNAME}}
