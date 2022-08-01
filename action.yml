@@ -1,5 +1,5 @@
 name: 'Publish Bicep'
-description: ''
+description: 'Publishes all the changed files given as input to the registry given as input'
 inputs:
   tag:
     description: 'tag to publish modules with'
