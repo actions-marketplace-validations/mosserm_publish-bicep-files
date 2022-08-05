@@ -1,6 +1,5 @@
 name: 'Publish Bicep Files'
 description: 'Publishes all the changed files given as input to the registry given as input'
-icon: upload-cloud
 inputs:
   tag:
     description: 'tag to publish modules with'
